@@ -1,0 +1,127 @@
+<link rel="import" href="../polymer/polymer.html">
+<link rel="import" href="../paper-ripple/paper-ripple.html">
+<link rel="import" href="../md-fonts/md-fonts.html">
+<link rel="import" href="../iron-icons/iron-icons.html">
+<link rel="import" href="../iron-icons/image-icons.html">
+<link rel="import" href="../iron-icons/editor-icons.html">
+<link rel="import" href="../iron-icons/device-icons.html">
+<link rel="import" href="../iron-icons/communication-icons.html">
+<link rel="import" href="../iron-icons/hardware-icons.html">
+<link rel="import" href="../iron-icons/maps-icons.html">
+<link rel="import" href="../iron-icons/notification-icons.html">
+<link rel="import" href="../iron-icons/social-icons.html">
+<link rel="import" href="../iron-icons/av-icons.html">
+<dom-module id="md-icon-label">
+  <style>
+    :host {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      padding: 0 1em;
+      height: 100%;
+      min-height: 100%;
+      cursor: pointer;
+      min-width: var(--md-icon-label-min-width, 80px);
+    }
+
+    :host.active {
+      cursor: default;
+    }
+
+    :host:hover .icon {
+      color: var(--md-icon-label-active-color, #009688);
+    }
+
+    :host.active paper-ripple {
+      display: none;
+    }
+
+    :host paper-ripple {
+      color: var(--md-icon-label-ripple-color, #757575);
+    }
+
+    :host .label-icon {
+      font-size: var(--md-icon-label-font-size, 14px);
+      font-family: 'robotoregular';
+    }
+
+    :host .icon {
+      color: var(--md-icon-label-color, #757575);
+    }
+
+    :host.disable-active-state.active .icon {
+      color: var(--md-icon-label-color, #757575);
+    }
+
+    :host.active .icon {
+      color: var(--md-icon-label-active-color, #009688);
+    }
+
+    :host.active .label-icon {
+      font-size: var(--md-icon-label-actvie-font-size, 16px);
+    }
+
+    :host.disable-active-state.active .label-icon {
+      font-size: var(--md-icon-label-font-size, 14px);
+    }
+
+    @media (max-width: 640px) {
+      :host {
+        min-width: var(--md-icon-label-mobile-min-width, 70px);
+      }
+
+      :host .label-icon {
+        font-size: var(--md-icon-label-mobile-font-size, 10px);
+      }
+
+      :host.active .label-icon {
+        font-size: var(--md-icon-label-mobile-actvie-font-size, 12px);
+      }
+    }
+  </style>
+  <template>
+    <iron-icon icon="[[icon]]" class="icon"></iron-icon>
+    <span class="label-icon icon">[[label]]</span>
+    <paper-ripple></paper-ripple>
+  </template>
+</dom-module>
+<script>
+
+  Polymer({
+
+    is: 'md-icon-label',
+
+    behaviors: [],
+
+    properties: {
+      icon: {
+        type: String,
+        value: null,
+        reflectToAttribute: true
+      },
+
+      label: {
+        type: String,
+        value: null,
+        reflectToAttribute: true
+      }
+    },
+
+    listeners: {},
+
+    ready: function () {
+
+    },
+
+    clear: function () {
+      this.classList.remove('active');
+    },
+
+    setIcon: function (icon) {
+      this.icon=icon;
+    }
+  });
+
+</script>
